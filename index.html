@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <style>
+        .display-2 {
+            font-size: 31px;
+            font-family: monospace;
+            color: #ffffff;
+        }
+
+        .time-card {
+            background-color: blue;
+            width: 400px;
+            text-align: center;
+            box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+            padding: 10px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="time-card">
+        <span class="display-2" id="hour">
+
+        </span>
+        <span class="display-2">:</span>
+        <span class="display-2" id="minute">
+
+        </span>
+        <span class="display-2">:</span>
+        <span class="display-2" id="second">
+
+        </span>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+        </script>
+    <script>
+        var colors = [
+            '#004D40',
+            '#304FFE',
+            'blue',
+            'green',
+            'red',
+            'black',
+            '#5D4037',
+            '#AD1457'
+        ];
+
+        function timer() {
+            var colorIndex = 0;
+            setInterval(function () {
+                colorIndex++;
+                if (colorIndex == colors.length)
+                    colorIndex = 0;
+
+
+                $('.time-card').css('background-color', colors[colorIndex]);
+
+
+                var seconds = new Date().getSeconds();
+                var minute = new Date().getMinutes();
+                var hour = new Date().getHours();
+
+                $('#hour').html(hour);
+                $('#minute').html(minute);
+                $('#second').html(seconds);
+
+            }, 1000)
+
+        }
+
+
+        window.onload = function () {
+            timer();
+        }
+    </script>
+
+</body>
+
+</html>
